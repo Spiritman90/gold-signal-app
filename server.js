@@ -144,7 +144,7 @@ app.post('/api/analyse', async (req, res) => {
   if (!price) return res.status(400).json({ error: 'Price data is required' });
 
   const apiKey = process.env.ANTHROPIC_API_KEY;
-  if (!apiKey || apiKey === 'your-anthropic-key-here') {
+  if (!apiKey) {
     return res.status(500).json({ error: 'ANTHROPIC_API_KEY not set correctly in .env file' });
   }
 
