@@ -542,20 +542,25 @@ function renderSignal(s) {
   const grid = document.getElementById('levels-grid');
   grid.innerHTML = '';
   [['TP1',s.tp1],['TP2',s.tp2],['TP3',s.tp3]].forEach(([tag,p]) => {
-    const diff = Math.abs(parseFloat(p) - parseFloat(s.entry));
+    const pVal = parseFloat(p);
+    const eVal = parseFloat(s.entry);
+    const diff = isNaN(pVal) || isNaN(eVal) ? 0 : Math.abs(pVal - eVal);
+    const priceDisplay = isNaN(pVal) ? '—' : pVal.toFixed(2);
     grid.innerHTML += `<div class="level-row tp">
       <span class="level-tag">${tag}</span>
-      <span class="level-price">${parseFloat(p).toFixed(2)}</span>
-      <span class="level-pnl">+$${(diff*0.1).toFixed(2)}</span>
-      <span class="level-pct">${diff.toFixed(1)} pts</span>
+      <span class="level-price">${priceDisplay}</span>
+      <span class="level-pnl">${diff > 0 ? '+$'+(diff*0.1).toFixed(2) : '—'}</span>
+      <span class="level-pct">${diff > 0 ? diff.toFixed(1)+' pts' : '—'}</span>
     </div>`;
   });
-  const slDiff = Math.abs(parseFloat(s.sl) - parseFloat(s.entry));
+  const slVal  = parseFloat(s.sl);
+  const eVal   = parseFloat(s.entry);
+  const slDiff = isNaN(slVal) || isNaN(eVal) ? 0 : Math.abs(slVal - eVal);
   grid.innerHTML += `<div class="level-row sl">
     <span class="level-tag">SL</span>
-    <span class="level-price">${parseFloat(s.sl).toFixed(2)}</span>
-    <span class="level-pnl">-$${(slDiff*0.1).toFixed(2)}</span>
-    <span class="level-pct">${slDiff.toFixed(1)} pts</span>
+    <span class="level-price">${isNaN(slVal) ? '—' : slVal.toFixed(2)}</span>
+    <span class="level-pnl">${slDiff > 0 ? '-$'+(slDiff*0.1).toFixed(2) : '—'}</span>
+    <span class="level-pct">${slDiff > 0 ? slDiff.toFixed(1)+' pts' : '—'}</span>
   </div>`;
 
   let reasoning = s.reasoning || '';
