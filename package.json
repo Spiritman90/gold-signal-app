@@ -1,7 +1,7 @@
 {
   "name": "gold-signal-app",
   "version": "1.0.0",
-  "description": "AI Gold Trading Signal Dashboard — Peter's Exness Demo",
+  "description": "AI Gold Trading Signal Dashboard",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
