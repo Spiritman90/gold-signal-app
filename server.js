@@ -239,6 +239,17 @@ app.get('/api/test', async (req, res) => {
   res.json(results);
 });
 
+app.get('/api/debug', (req, res) => {
+  res.json({
+    node_env:         process.env.NODE_ENV,
+    metals_key_len:   process.env.METALS_API_KEY    ? process.env.METALS_API_KEY.length    : 0,
+    anthropic_key_len: process.env.ANTHROPIC_API_KEY ? process.env.ANTHROPIC_API_KEY.length : 0,
+    metals_key_start:  process.env.METALS_API_KEY    ? process.env.METALS_API_KEY.substring(0,6)    : 'NOT SET',
+    anthropic_key_start: process.env.ANTHROPIC_API_KEY ? process.env.ANTHROPIC_API_KEY.substring(0,7) : 'NOT SET',
+    all_env_keys: Object.keys(process.env).filter(k => !k.includes('npm') && !k.includes('PATH'))
+  });
+});
+
 
 // ─────────────────────────────────────────────────────────────
 //  START
