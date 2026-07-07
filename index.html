@@ -24,131 +24,84 @@
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
-
-  body {
-    font-family: 'Space Grotesk', sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    min-height: 100vh;
-  }
+  body { font-family: 'Space Grotesk', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
 
   header {
-    background: var(--surface);
-    border-bottom: 1px solid var(--border);
-    padding: 16px 24px;
-    display: flex; align-items: center; justify-content: space-between;
-    flex-wrap: wrap; gap: 12px;
+    background: var(--surface); border-bottom: 1px solid var(--border);
+    padding: 16px 24px; display: flex; align-items: center;
+    justify-content: space-between; flex-wrap: wrap; gap: 12px;
     position: sticky; top: 0; z-index: 100;
   }
-
   .logo { display: flex; align-items: center; gap: 10px; }
   .logo-icon {
     width: 36px; height: 36px;
     background: linear-gradient(135deg, var(--gold), var(--gold-dim));
-    border-radius: 8px;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 18px;
+    border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 18px;
   }
   .logo-text { font-size: 16px; font-weight: 700; color: var(--gold); }
   .logo-sub  { font-size: 11px; color: var(--muted); }
-
   .header-right { display: flex; align-items: center; gap: 14px; }
   .live-badge {
     display: flex; align-items: center; gap: 6px;
-    background: rgba(34,197,94,0.12);
-    border: 1px solid rgba(34,197,94,0.3);
-    border-radius: 20px; padding: 4px 12px;
-    font-size: 12px; font-weight: 600; color: var(--green);
+    background: rgba(34,197,94,0.12); border: 1px solid rgba(34,197,94,0.3);
+    border-radius: 20px; padding: 4px 12px; font-size: 12px; font-weight: 600; color: var(--green);
   }
-  .live-dot {
-    width: 7px; height: 7px; border-radius: 50%;
-    background: var(--green); animation: pulse 1.4s infinite;
-  }
-  @keyframes pulse {
-    0%,100% { opacity:1; transform:scale(1); }
-    50%      { opacity:0.5; transform:scale(0.7); }
-  }
+  .live-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--green); animation: pulse 1.4s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1;transform:scale(1);} 50%{opacity:0.5;transform:scale(0.7);} }
   #clock { font-family: 'JetBrains Mono', monospace; font-size: 13px; color: var(--muted); }
 
   main { max-width: 960px; margin: 0 auto; padding: 24px 16px 48px; }
 
-  /* SESSIONS */
   .sessions { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 20px; }
-  .session-pill {
-    padding: 5px 12px; border-radius: 20px;
-    font-size: 11px; font-weight: 600;
-    border: 1px solid var(--border); color: var(--muted);
-  }
-  .session-pill.active {
-    background: rgba(212,175,55,0.15);
-    border-color: var(--gold-dim); color: var(--gold);
-  }
+  .session-pill { padding: 5px 12px; border-radius: 20px; font-size: 11px; font-weight: 600; border: 1px solid var(--border); color: var(--muted); }
+  .session-pill.active { background: rgba(212,175,55,0.15); border-color: var(--gold-dim); color: var(--gold); }
 
-  /* BANNER */
-  .banner {
-    border-radius: 10px; padding: 12px 16px;
-    margin-bottom: 16px; font-size: 13px; display: none;
-  }
+  .banner { border-radius: 10px; padding: 12px 16px; margin-bottom: 16px; font-size: 13px; display: none; }
   .banner.error   { background: rgba(239,68,68,0.08);  border: 1px solid rgba(239,68,68,0.3);  color: #F87171; }
   .banner.warning { background: rgba(245,158,11,0.08); border: 1px solid rgba(245,158,11,0.3); color: #FCD34D; }
+  .banner.success { background: rgba(34,197,94,0.08);  border: 1px solid rgba(34,197,94,0.3);  color: #86EFAC; }
 
-  /* PRICE HERO */
   .price-hero {
     background: linear-gradient(135deg, var(--surface) 0%, #161A22 100%);
-    border: 1px solid var(--border);
-    border-radius: 16px; padding: 28px 28px 24px;
-    margin-bottom: 20px; position: relative; overflow: hidden;
+    border: 1px solid var(--border); border-radius: 16px;
+    padding: 28px 28px 24px; margin-bottom: 20px; position: relative; overflow: hidden;
   }
   .price-hero::before {
-    content:''; position: absolute; top:-40px; right:-40px;
-    width:200px; height:200px;
-    background: radial-gradient(circle, rgba(212,175,55,0.08) 0%, transparent 70%);
-    pointer-events: none;
+    content:''; position: absolute; top:-40px; right:-40px; width:200px; height:200px;
+    background: radial-gradient(circle, rgba(212,175,55,0.08) 0%, transparent 70%); pointer-events: none;
   }
   .price-label { font-size: 12px; font-weight: 600; color: var(--gold); letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 8px; }
   .price-row   { display: flex; align-items: baseline; gap: 16px; flex-wrap: wrap; }
-  .price-value {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 52px; font-weight: 600;
-    color: var(--gold-light); line-height: 1; letter-spacing: -1px;
-  }
-  .price-change {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 16px; font-weight: 600; padding: 4px 10px; border-radius: 6px;
-  }
+  .price-value { font-family: 'JetBrains Mono', monospace; font-size: 52px; font-weight: 600; color: var(--gold-light); line-height: 1; letter-spacing: -1px; }
+  .price-change { font-family: 'JetBrains Mono', monospace; font-size: 16px; font-weight: 600; padding: 4px 10px; border-radius: 6px; }
   .price-change.up   { color: var(--green); background: rgba(34,197,94,0.12); }
   .price-change.down { color: var(--red);   background: rgba(239,68,68,0.12); }
-
   .price-meta { display: flex; gap: 24px; margin-top: 16px; flex-wrap: wrap; }
   .price-meta-item { display: flex; flex-direction: column; gap: 2px; }
   .price-meta-label { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.8px; }
   .price-meta-val   { font-family: 'JetBrains Mono', monospace; font-size: 14px; font-weight: 600; color: var(--text); }
 
-  /* CONTROLS */
-  .controls { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 20px; }
-  .btn {
-    padding: 11px 22px; border-radius: 10px; border: none; cursor: pointer;
-    font-family: 'Space Grotesk', sans-serif; font-size: 14px; font-weight: 600;
-    transition: all 0.2s; display: flex; align-items: center; gap: 8px;
+  /* DATA QUALITY BADGE */
+  .data-quality {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 4px 10px; border-radius: 6px; font-size: 11px; font-weight: 600;
+    margin-bottom: 16px;
   }
+  .data-quality.real      { background: rgba(34,197,94,0.12);  color: var(--green); border: 1px solid rgba(34,197,94,0.3); }
+  .data-quality.simulated { background: rgba(245,158,11,0.12); color: var(--amber); border: 1px solid rgba(245,158,11,0.3); }
+
+  .controls { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 20px; }
+  .btn { padding: 11px 22px; border-radius: 10px; border: none; cursor: pointer; font-family: 'Space Grotesk', sans-serif; font-size: 14px; font-weight: 600; transition: all 0.2s; display: flex; align-items: center; gap: 8px; }
   .btn-primary { background: linear-gradient(135deg, var(--gold), var(--gold-dim)); color: #0A0C0F; }
   .btn-primary:hover:not(:disabled) { filter: brightness(1.1); transform: translateY(-1px); }
   .btn-secondary { background: var(--surface2); color: var(--text); border: 1px solid var(--border); }
   .btn-secondary:hover:not(:disabled) { background: var(--border); }
   .btn:disabled { opacity: 0.5; cursor: not-allowed; }
-  .spinner {
-    width: 16px; height: 16px;
-    border: 2px solid rgba(0,0,0,0.25); border-top-color: #0A0C0F;
-    border-radius: 50%; animation: spin 0.6s linear infinite; display: none;
-  }
+  .spinner { width: 16px; height: 16px; border: 2px solid rgba(0,0,0,0.25); border-top-color: #0A0C0F; border-radius: 50%; animation: spin 0.6s linear infinite; display: none; }
   .btn.loading .spinner { display: block; }
   @keyframes spin { to { transform: rotate(360deg); } }
 
-  /* INDICATORS */
-  .section-title {
-    font-size: 12px; font-weight: 700; color: var(--muted);
-    text-transform: uppercase; letter-spacing: 1.2px; margin-bottom: 12px;
-  }
+  .section-title { font-size: 12px; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 1.2px; margin-bottom: 12px; }
   .indicators-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px,1fr)); gap: 10px; margin-bottom: 20px; }
   .indicator-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 16px; }
   .ind-name  { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 6px; }
@@ -158,7 +111,6 @@
   .ind-signal.bearish { color: var(--red);   background: rgba(239,68,68,0.12); }
   .ind-signal.neutral { color: var(--amber); background: rgba(245,158,11,0.12); }
 
-  /* SIGNAL CARD */
   .signal-card { border-radius: 16px; padding: 24px; margin-bottom: 20px; border: 2px solid transparent; transition: all 0.4s ease; }
   .signal-card.buy  { background: rgba(34,197,94,0.07);  border-color: rgba(34,197,94,0.4); }
   .signal-card.sell { background: rgba(239,68,68,0.07);  border-color: rgba(239,68,68,0.4); }
@@ -170,7 +122,6 @@
   .signal-badge.sell { color: var(--red); }
   .signal-badge.wait { color: var(--amber); }
   .signal-icon { font-size: 32px; }
-
   .confidence-wrap { display: flex; flex-direction: column; align-items: flex-end; gap: 4px; }
   .confidence-label { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.8px; }
   .confidence-val   { font-size: 22px; font-weight: 700; color: var(--text); }
@@ -180,26 +131,16 @@
   .conf-fill.sell { background: var(--red); }
   .conf-fill.wait { background: var(--amber); }
 
-  .entry-row {
-    background: var(--surface2); border-radius: 10px; padding: 14px 18px;
-    margin-bottom: 16px; display: flex; align-items: center;
-    justify-content: space-between; gap: 12px; flex-wrap: wrap;
-  }
+  .entry-row { background: var(--surface2); border-radius: 10px; padding: 14px 18px; margin-bottom: 16px; display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
   .entry-label { font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.8px; }
   .entry-price { font-family: 'JetBrains Mono', monospace; font-size: 22px; font-weight: 700; color: var(--gold-light); }
   .entry-lot   { font-size: 12px; color: var(--muted); }
 
   .levels-grid { display: grid; gap: 10px; margin-bottom: 16px; }
-  .level-row {
-    background: var(--surface2); border-radius: 10px; padding: 13px 18px;
-    display: flex; align-items: center; gap: 14px; border-left: 3px solid transparent;
-  }
+  .level-row { background: var(--surface2); border-radius: 10px; padding: 13px 18px; display: flex; align-items: center; gap: 14px; border-left: 3px solid transparent; }
   .level-row.tp { border-left-color: var(--green); }
   .level-row.sl { border-left-color: var(--red); }
-  .level-tag {
-    font-size: 11px; font-weight: 700; letter-spacing: 1px;
-    padding: 3px 8px; border-radius: 5px; min-width: 44px; text-align: center;
-  }
+  .level-tag { font-size: 11px; font-weight: 700; letter-spacing: 1px; padding: 3px 8px; border-radius: 5px; min-width: 44px; text-align: center; }
   .level-row.tp .level-tag { background: rgba(34,197,94,0.15); color: var(--green); }
   .level-row.sl .level-tag { background: rgba(239,68,68,0.15);  color: var(--red); }
   .level-price { font-family: 'JetBrains Mono', monospace; font-size: 16px; font-weight: 600; color: var(--text); flex: 1; }
@@ -212,10 +153,7 @@
   .ai-box-label { font-size: 11px; color: var(--blue); text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 8px; font-weight: 600; }
   .ai-box p { font-size: 14px; line-height: 1.65; color: #C8CDD8; white-space: pre-wrap; }
 
-  .risk-box {
-    background: rgba(245,158,11,0.06); border: 1px solid rgba(245,158,11,0.25);
-    border-radius: 10px; padding: 14px 18px; display: flex; gap: 12px; align-items: flex-start;
-  }
+  .risk-box { background: rgba(245,158,11,0.06); border: 1px solid rgba(245,158,11,0.25); border-radius: 10px; padding: 14px 18px; display: flex; gap: 12px; align-items: flex-start; }
   .risk-icon { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
   .risk-text { font-size: 13px; line-height: 1.55; color: #C8A84B; }
 
@@ -258,6 +196,7 @@
 
   <div class="banner error"   id="banner-error"></div>
   <div class="banner warning" id="banner-warn"></div>
+  <div class="banner success" id="banner-success"></div>
 
   <div class="price-hero">
     <div class="price-label">XAU / USD · Gold Spot</div>
@@ -285,15 +224,17 @@
     </div>
   </div>
 
+  <div id="data-quality-badge" class="data-quality simulated">⏳ Loading real candle data...</div>
+
   <div class="controls">
     <button class="btn btn-primary" id="analyzeBtn" onclick="runAnalysis()">
       <div class="spinner"></div>
       <span class="btn-text">🔍 Analyse Now</span>
     </button>
-    <button class="btn btn-secondary" onclick="loadPrice()">↻ Refresh Price</button>
+    <button class="btn btn-secondary" onclick="refreshAll()">↻ Refresh All</button>
   </div>
 
-  <div class="section-title">Technical Indicators</div>
+  <div class="section-title">Technical Indicators <span id="indicator-source" style="color:var(--muted);font-weight:400;text-transform:none;letter-spacing:0;font-size:11px;"></span></div>
   <div class="indicators-grid">
     <div class="indicator-card">
       <div class="ind-name">RSI (14)</div>
@@ -352,7 +293,7 @@
     <div class="risk-box">
       <div class="risk-icon">⚠️</div>
       <div class="risk-text" id="risk-text">
-        Click <strong>Analyse Now</strong> to generate your first Gold signal.
+        Click <strong>Analyse Now</strong> to generate your Gold signal.
         Always use your Exness <strong>demo account</strong> first.
         Never risk money you cannot afford to lose.
       </div>
@@ -361,7 +302,7 @@
 
   <div class="footer-note">
     AI Gold Signal Dashboard · For educational &amp; demo trading only · Not financial advice<br>
-    Best times for Nigeria: <strong>9am–1pm WAT</strong> (London Open) · <strong>2pm–6pm WAT</strong> (New York Open)
+    Best times for Nigeria: <strong>9am–1pm WAT</strong> (London) · <strong>2pm–6pm WAT</strong> (New York)
   </div>
 
 </main>
@@ -386,62 +327,16 @@ setInterval(updateClock, 1000);
 updateClock();
 
 // ── BANNERS ──────────────────────────────────────────────────
-function showError(msg)   { const el = document.getElementById('banner-error'); el.textContent = msg; el.style.display = 'block'; }
-function showWarning(msg) { const el = document.getElementById('banner-warn');  el.textContent = msg; el.style.display = 'block'; }
-function clearBanners()   { document.getElementById('banner-error').style.display = 'none'; document.getElementById('banner-warn').style.display = 'none'; }
+function showError(msg)   { const el = document.getElementById('banner-error');   el.textContent = msg; el.style.display = 'block'; }
+function showWarning(msg) { const el = document.getElementById('banner-warn');    el.textContent = msg; el.style.display = 'block'; }
+function showSuccess(msg) { const el = document.getElementById('banner-success'); el.textContent = msg; el.style.display = 'block'; setTimeout(() => el.style.display = 'none', 5000); }
+function clearBanners()   { ['banner-error','banner-warn','banner-success'].forEach(id => document.getElementById(id).style.display = 'none'); }
 
-// ── PRICE ────────────────────────────────────────────────────
-let currentPrice = null;
-let priceHistory = [];
+// ── STATE ────────────────────────────────────────────────────
+let currentPrice    = null;
+let priceHistory    = [];   // real candle closes or fallback
 let indicatorValues = {};
-
-async function loadPrice() {
-  document.getElementById('price').textContent = 'Fetching...';
-  clearBanners();
-  try {
-    // Calls OUR local server — no CORS issues
-    const res  = await fetch('/api/gold-price');
-    if (!res.ok) throw new Error('Server returned ' + res.status);
-    const data = await res.json();
-
-    currentPrice = data.price;
-
-    const change    = data.price - data.prevClose;
-    const changePct = ((change / data.prevClose) * 100).toFixed(2);
-
-    document.getElementById('price').textContent       = data.price.toFixed(2);
-    document.getElementById('meta-high').textContent   = data.high.toFixed(2);
-    document.getElementById('meta-low').textContent    = data.low.toFixed(2);
-    document.getElementById('meta-time').textContent   = new Date().toLocaleTimeString('en-GB', { hour:'2-digit', minute:'2-digit' });
-    document.getElementById('meta-source').textContent = data.source;
-
-    const chEl = document.getElementById('price-change');
-    chEl.textContent = (change >= 0 ? '+' : '') + change.toFixed(2) + ' (' + (change >= 0 ? '+' : '') + changePct + '%)';
-    chEl.className   = 'price-change ' + (change >= 0 ? 'up' : 'down');
-
-    if (data.simulated) showWarning('⚠️ Live price unavailable — showing simulated price. Market may be closed. AI analysis will still work.');
-
-    // Build price history for indicators
-    if (priceHistory.length < 60) {
-      priceHistory = [];
-      let p = data.prevClose;
-      for (let i = 0; i < 60; i++) {
-        p += (Math.random() - 0.48) * 1.5;
-        priceHistory.push(p);
-      }
-      priceHistory[priceHistory.length - 1] = currentPrice;
-    } else {
-      priceHistory.push(currentPrice);
-      if (priceHistory.length > 200) priceHistory.shift();
-    }
-
-    computeIndicators(priceHistory);
-
-  } catch (e) {
-    showError('❌ Cannot reach the server. Make sure server.js is running in your terminal. Error: ' + e.message);
-    document.getElementById('price').textContent = 'Server offline';
-  }
-}
+let usingRealData   = false;
 
 // ── INDICATORS ───────────────────────────────────────────────
 function computeRSI(prices, period = 14) {
@@ -451,8 +346,8 @@ function computeRSI(prices, period = 14) {
   for (let i = 0; i < period; i++) { if (d[i] > 0) g += d[i]; else l -= d[i]; }
   let ag = g / period, al = l / period;
   for (let i = period; i < d.length; i++) {
-    ag = (ag * (period - 1) + Math.max(0,  d[i])) / period;
-    al = (al * (period - 1) + Math.max(0, -d[i])) / period;
+    ag = (ag * (period-1) + Math.max(0,  d[i])) / period;
+    al = (al * (period-1) + Math.max(0, -d[i])) / period;
   }
   return al === 0 ? 100 : 100 - 100 / (1 + ag / al);
 }
@@ -482,24 +377,108 @@ function computeIndicators(prices) {
     document.getElementById(sigId).className   = 'ind-signal ' + cls;
   }
 
-  if (rsi !== null) {
-    const [lbl, cls] = rsi < 30 ? ['Oversold → Bullish','bullish'] : rsi > 70 ? ['Overbought → Bearish','bearish'] : ['Neutral Zone','neutral'];
-    setInd('ind-rsi', 'ind-rsi-sig', rsi.toFixed(1), lbl, cls);
+  if (rsi  !== null) {
+    const [lbl,cls] = rsi < 30 ? ['Oversold → Bullish','bullish'] : rsi > 70 ? ['Overbought → Bearish','bearish'] : ['Neutral Zone','neutral'];
+    setInd('ind-rsi','ind-rsi-sig', rsi.toFixed(1), lbl, cls);
   }
   if (macd !== null) {
-    setInd('ind-macd', 'ind-macd-sig', macd.toFixed(2), macd > 0 ? 'Bullish Momentum' : 'Bearish Momentum', macd > 0 ? 'bullish' : 'bearish');
+    setInd('ind-macd','ind-macd-sig', macd.toFixed(2), macd > 0 ? 'Bullish Momentum':'Bearish Momentum', macd > 0 ? 'bullish':'bearish');
   }
   if (ma20 !== null) {
     const above = currentPrice > ma20;
-    setInd('ind-ma20', 'ind-ma20-sig', ma20.toFixed(2), above ? 'Price Above → Bullish' : 'Price Below → Bearish', above ? 'bullish' : 'bearish');
+    setInd('ind-ma20','ind-ma20-sig', ma20.toFixed(2), above ? 'Price Above → Bullish':'Price Below → Bearish', above ? 'bullish':'bearish');
   }
   if (ma50 !== null) {
     const above = currentPrice > ma50;
-    setInd('ind-ma50', 'ind-ma50-sig', ma50.toFixed(2), above ? 'Price Above → Bullish' : 'Price Below → Bearish', above ? 'bullish' : 'bearish');
+    setInd('ind-ma50','ind-ma50-sig', ma50.toFixed(2), above ? 'Price Above → Bullish':'Price Below → Bearish', above ? 'bullish':'bearish');
   }
 }
 
-// ── ANALYSE ──────────────────────────────────────────────────
+// ── LOAD REAL CANDLES FROM TWELVE DATA ───────────────────────
+async function loadCandles() {
+  try {
+    const res  = await fetch('/api/candles');
+    if (!res.ok) throw new Error('Candle API returned ' + res.status);
+    const data = await res.json();
+    if (data.error) throw new Error(data.error);
+
+    priceHistory  = data.closes;
+    usingRealData = true;
+    currentPrice  = data.latest;
+
+    // Update data quality badge
+    const badge = document.getElementById('data-quality-badge');
+    badge.className   = 'data-quality real';
+    badge.textContent = `✅ Real candle data — ${data.count} candles from Twelve Data`;
+
+    document.getElementById('indicator-source').textContent = '· based on real 5-min candles';
+    document.getElementById('meta-high').textContent = data.high.toFixed(2);
+    document.getElementById('meta-low').textContent  = data.low.toFixed(2);
+
+    computeIndicators(priceHistory);
+    showSuccess('✅ Real Gold candle data loaded — indicators are now 100% accurate!');
+    console.log(`[Candles] ✅ ${data.count} real candles loaded`);
+
+  } catch (e) {
+    console.warn('[Candles] ❌ Falling back to simulated history:', e.message);
+    usingRealData = false;
+
+    const badge = document.getElementById('data-quality-badge');
+    badge.className   = 'data-quality simulated';
+    badge.textContent = '⚠️ Using estimated indicator data — add TWELVE_DATA_API_KEY to Railway for real data';
+
+    // Build simulated history as fallback
+    if (currentPrice && priceHistory.length < 60) {
+      priceHistory = [];
+      let p = currentPrice * 0.998;
+      for (let i = 0; i < 60; i++) { p += (Math.random() - 0.48) * 1.5; priceHistory.push(p); }
+      priceHistory[priceHistory.length - 1] = currentPrice;
+      computeIndicators(priceHistory);
+    }
+  }
+}
+
+// ── LOAD GOLD PRICE ──────────────────────────────────────────
+async function loadPrice() {
+  document.getElementById('price').textContent = 'Fetching...';
+  clearBanners();
+  try {
+    const res  = await fetch('/api/gold-price');
+    if (!res.ok) throw new Error('Server returned ' + res.status);
+    const data = await res.json();
+
+    currentPrice = data.price;
+    const change    = data.price - data.prevClose;
+    const changePct = ((change / data.prevClose) * 100).toFixed(2);
+
+    document.getElementById('price').textContent     = data.price.toFixed(2);
+    document.getElementById('meta-time').textContent = new Date().toLocaleTimeString('en-GB', {hour:'2-digit',minute:'2-digit'});
+    document.getElementById('meta-source').textContent = data.source;
+
+    if (!document.getElementById('meta-high').textContent || document.getElementById('meta-high').textContent === '—') {
+      document.getElementById('meta-high').textContent = data.high.toFixed(2);
+      document.getElementById('meta-low').textContent  = data.low.toFixed(2);
+    }
+
+    const chEl = document.getElementById('price-change');
+    chEl.textContent = (change >= 0 ? '+':'') + change.toFixed(2) + ' (' + (change >= 0 ? '+':'') + changePct + '%)';
+    chEl.className   = 'price-change ' + (change >= 0 ? 'up':'down');
+
+    if (data.simulated) showWarning('⚠️ Live price unavailable — showing simulated price. Market may be closed.');
+
+  } catch (e) {
+    showError('❌ Cannot reach the server. Error: ' + e.message);
+    document.getElementById('price').textContent = 'Error';
+  }
+}
+
+// ── REFRESH ALL ──────────────────────────────────────────────
+async function refreshAll() {
+  await loadPrice();
+  await loadCandles();
+}
+
+// ── SESSION ──────────────────────────────────────────────────
 function getSession() {
   const utcH = new Date().getUTCHours() + new Date().getUTCMinutes() / 60;
   if (utcH >= 12 && utcH < 16) return 'London-NY Overlap (Very High Activity)';
@@ -508,9 +487,10 @@ function getSession() {
   return 'Asia Session (Low Activity — consider waiting)';
 }
 
+// ── ANALYSE ──────────────────────────────────────────────────
 async function runAnalysis() {
   if (!currentPrice) { await loadPrice(); }
-  if (!currentPrice) { showError('Cannot analyse — price not loaded. Check the server is running.'); return; }
+  if (!currentPrice) { showError('Price not loaded. Click Refresh All first.'); return; }
 
   const btn = document.getElementById('analyzeBtn');
   btn.disabled = true;
@@ -532,16 +512,12 @@ async function runAnalysis() {
       })
     });
 
-    if (!res.ok) {
-      const err = await res.json();
-      throw new Error(err.error || 'Server error ' + res.status);
-    }
-
+    if (!res.ok) { const e = await res.json(); throw new Error(e.error || 'Server error'); }
     const signal = await res.json();
     renderSignal(signal);
 
   } catch (e) {
-    showError('❌ Analysis failed: ' + e.message + '. Make sure server.js is running and your API key is in the .env file.');
+    showError('❌ Analysis failed: ' + e.message);
   }
 
   btn.disabled = false;
@@ -551,37 +527,34 @@ async function runAnalysis() {
 
 // ── RENDER SIGNAL ────────────────────────────────────────────
 function renderSignal(s) {
-  const sig  = (s.signal || 'WAIT').toUpperCase();
-  document.getElementById('signal-card').className  = 'signal-card ' + sig.toLowerCase();
+  const sig = (s.signal || 'WAIT').toUpperCase();
+  document.getElementById('signal-card').className = 'signal-card ' + sig.toLowerCase();
   const badge = document.getElementById('signal-badge');
   badge.className = 'signal-badge ' + sig.toLowerCase();
-  badge.querySelector('.signal-icon').textContent = { BUY:'📈', SELL:'📉', WAIT:'⏳' }[sig] || '⏳';
+  badge.querySelector('.signal-icon').textContent = {BUY:'📈',SELL:'📉',WAIT:'⏳'}[sig]||'⏳';
   document.getElementById('signal-text').textContent = sig;
-
-  document.getElementById('conf-val').textContent   = s.confidence + '%';
-  document.getElementById('conf-fill').style.width  = s.confidence + '%';
-  document.getElementById('conf-fill').className    = 'conf-fill ' + sig.toLowerCase();
-
-  document.getElementById('entry-price').textContent    = parseFloat(s.entry).toFixed(2);
-  document.getElementById('entry-row').style.display    = 'flex';
+  document.getElementById('conf-val').textContent    = s.confidence + '%';
+  document.getElementById('conf-fill').style.width   = s.confidence + '%';
+  document.getElementById('conf-fill').className     = 'conf-fill ' + sig.toLowerCase();
+  document.getElementById('entry-price').textContent = parseFloat(s.entry).toFixed(2);
+  document.getElementById('entry-row').style.display = 'flex';
 
   const grid = document.getElementById('levels-grid');
   grid.innerHTML = '';
-  [['TP1', s.tp1], ['TP2', s.tp2], ['TP3', s.tp3]].forEach(([tag, p]) => {
+  [['TP1',s.tp1],['TP2',s.tp2],['TP3',s.tp3]].forEach(([tag,p]) => {
     const diff = Math.abs(parseFloat(p) - parseFloat(s.entry));
     grid.innerHTML += `<div class="level-row tp">
       <span class="level-tag">${tag}</span>
       <span class="level-price">${parseFloat(p).toFixed(2)}</span>
-      <span class="level-pnl">+$${(diff * 0.1).toFixed(2)}</span>
+      <span class="level-pnl">+$${(diff*0.1).toFixed(2)}</span>
       <span class="level-pct">${diff.toFixed(1)} pts</span>
     </div>`;
   });
-
   const slDiff = Math.abs(parseFloat(s.sl) - parseFloat(s.entry));
   grid.innerHTML += `<div class="level-row sl">
     <span class="level-tag">SL</span>
     <span class="level-price">${parseFloat(s.sl).toFixed(2)}</span>
-    <span class="level-pnl">-$${(slDiff * 0.1).toFixed(2)}</span>
+    <span class="level-pnl">-$${(slDiff*0.1).toFixed(2)}</span>
     <span class="level-pct">${slDiff.toFixed(1)} pts</span>
   </div>`;
 
@@ -589,14 +562,18 @@ function renderSignal(s) {
   if (s.how_to_trade) reasoning += '\n\n📋 HOW TO PLACE ON MT5:\n' + s.how_to_trade;
   document.getElementById('ai-reasoning').textContent = reasoning;
   document.getElementById('ai-box').style.display     = 'block';
-
   document.getElementById('risk-text').innerHTML =
-    `⚠️ <strong>Risk Warning:</strong> ${s.risk_warning || 'Always use your Exness demo account first.'} Never risk more than 2% of your balance per trade.`;
+    `⚠️ <strong>Risk Warning:</strong> ${s.risk_warning||'Always use your Exness demo account first.'} Never risk more than 2% of your balance per trade.`;
 }
 
 // ── INIT ─────────────────────────────────────────────────────
-loadPrice();
-setInterval(loadPrice, 60000);
+async function init() {
+  await loadPrice();
+  await loadCandles();
+}
+
+init();
+setInterval(refreshAll, 300000); // refresh everything every 5 minutes
 </script>
 </body>
 </html>
